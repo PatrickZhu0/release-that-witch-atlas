@@ -1,0 +1,18 @@
+import{a as e,r as t,z as n}from"./node-utils-exnnnMLT.js";import{t as r}from"./controllers-DjtRWWsG.js";import{x as i}from"./options-model-BpAETY5z.js";import{t as a}from"./pack-generator-BuIcHPWx.js";import{T as o,t as s}from"./layers-cD4uYvJ_.js";import{t as c}from"./dialog-D4VWmmDP.js";import{t as l}from"./map-placement-DApFY9in.js";import{_ as u}from"./app-DI46COQs.js";import{o as d,t as f}from"./tooltips-B64CH7zD.js";import{O as p,T as m,a as h}from"./index-DiNRG4NV.js";var g=[],_=!1;function v(e){if(options.app.mode)return;l(),c.closeAll(),s.show(`routes`),_=!s.isOn(`cells`),s.show(`cells`),d(h(`Click to add route point`),!0),n(`#debug`).append(`g`).attr(`id`,`controlCells`),n(`#debug`).append(`g`).attr(`id`,`controlPoints`),n(`#viewbox`).style(`cursor`,`crosshair`).on(`click`,x),g=[],y();let r=e||`roads`;t(`routeCreatorGroupSelect`).innerHTML=Object.keys(styles.routes.groups).map(e=>`<option value="${e}" ${e===r?`selected`:``}>${e}</option>`).join(``),c.open(`routeCreator`,{title:h(`Create Route`),position:{my:`left top`,at:`left+10 top+10`,of:`#map`},onClose:T})}function y(){c.destroy(`routeCreator`);let e=`<div id="routeCreator" class="dialog">
+    <div>${h(`Click on map to add/remove route points`)}</div>
+    <div id="routeCreatorBody" class="table" style="margin: 0.3em 0"></div>
+    <div id="routeCreatorBottom">
+      <button id="routeCreatorComplete" data-tip="${h(`Complete route creation`)}" class="icon-check"></button>
+      <button id="routeCreatorCancel" data-tip="${h(`Cancel the creation`)}" class="icon-cancel"></button>
+      <div style="display: inline-block">
+        ${h(`Group`)}:
+        <select id="routeCreatorGroupSelect"></select>
+        <span id="routeCreatorGroupEdit" data-tip="${h(`Edit route groups`)}" class="icon-pencil pointer"></span>
+      </div>
+    </div>
+  </div>`;t(`dialogs`).insertAdjacentHTML(`beforeend`,e),t(`routeCreatorGroupSelect`).addEventListener(`change`,()=>C(g)),t(`routeCreatorGroupEdit`).addEventListener(`click`,()=>void r.RouteGroupsEditor.open()),t(`routeCreatorComplete`).addEventListener(`click`,w),t(`routeCreatorCancel`).addEventListener(`click`,()=>c.close(`routeCreator`)),t(`routeCreatorBody`).addEventListener(`click`,b)}function b(e){let t=e.target;t.classList.contains(`icon-trash-empty`)&&S(t.parentNode.dataset.point)}function x(n){let[r,i]=e(n,this),o=m(r,0,options.map.graph.width),s=m(i,0,options.map.graph.height),c=a.findCell(o,s),l=[p(o,2),p(s,2),c];g.push(l),C(g),t(`routeCreatorBody`).innerHTML+=`<div class="editorLine" style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 1em;" data-point="${l.join(`-`)}">
+      <span><b>${h(`Cell`)}</b>: ${c}</span>
+      <span><b>X</b>: ${l[0]}</span>
+      <span><b>Y</b>: ${l[1]}</span>
+      <span data-tip="${h(`Remove`)}" class="icon-trash-empty pointer"></span>
+    </div>`}function S(e){g=g.filter(t=>t.join(`-`)!==e),C(g),t(`routeCreatorBody`).querySelector(`[data-point='${e}']`)?.remove()}function C(e){n(`#debug`).select(`#controlCells`).selectAll(`polygon`).data(e).join(`polygon`).attr(`points`,e=>String(a.getPolygon(e[2]))).attr(`class`,`current`),n(`#debug`).select(`#controlPoints`).selectAll(`circle`).data(e).join(`circle`).attr(`cx`,e=>e[0]).attr(`cy`,e=>e[1]);let r=t(`routeCreatorGroupSelect`).value;o({group:r,points:e})}function w(){let e=g;if(e.length<2){d(h(`Add at least 2 points`),!1,`error`);return}let n=t(`routeCreatorGroupSelect`).value,a=i.create(e,n);o(null),s.draw(`routes`,`goods`,`trade`),r.RouteEditor.open(`route${a}`)}function T(){n(`#debug`).select(`#controlCells`).remove(),n(`#debug`).select(`#controlPoints`).remove(),o(null),u(),f(),_&&s.hide(`cells`),_=!1,g=[],c.destroy(`routeCreator`)}var E={open:v};export{E as RouteCreator};

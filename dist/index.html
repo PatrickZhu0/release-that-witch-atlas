@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#163932"><title>灰堡舆图 · 放开那个女巫</title><link rel="icon" href="seal.svg" type="image/svg+xml"><link rel="stylesheet" href="atlas.css?v=railway"><script type="module" src="atlas.js?v=railway"></script></head>
+<body>
+<header class="mast"><a href="./" class="brand"><img src="seal.svg" alt="" width="38" height="38"><span>灰堡舆图<small>GRAYCASTLE ATLAS</small></span></a><nav aria-label="主导航"><button id="overview" class="nav-item current">地图总览</button><button id="gazetteer" class="nav-item">地名索引</button><button id="notes" class="nav-item">制图说明</button></nav><a id="edit" class="editor" href="editor/"><i data-icon="pen"></i><span>打开 Azgaar 编辑器</span></a></header>
+<main><aside class="side"><div class="side-inner"><div class="eyebrow"><span class="line"></span> RELEASE THAT WITCH</div><h1>四大王国舆图</h1><div class="intro">《放开那个女巫》· 原著主要地点</div>
+<div class="divider"></div>
+<div class="section-title"><h2>王国疆域</h2><small>REALMS</small></div><div id="realms" class="realms"></div>
+<div class="divider"></div>
+<div class="section-title"><h2>舆图手记</h2><small>GAZETTEER</small></div><article id="detail" aria-live="polite"></article>
+<div class="side-foot"><button class="text-link" id="allplaces">浏览全部地点 <i data-icon="forward"></i></button></div></div>
+<div class="aside-base"><span class="smallmark">✦</span> 二目 · 原著地理重绘</div></aside>
+<section class="chart" aria-label="四大王国交互地图">
+<div class="chart-head"><span><i data-icon="map"></i> 曙光境与峡湾</span><div><button id="railwayIndex" title="后期铁路示意"><i data-icon="rail"></i>铁路示意</button><button id="hydro" title="查阅水系与原文章节"><i data-icon="book"></i>水系索引</button><button id="layers" aria-expanded="false"><i data-icon="layers"></i>图层</button><span class="bar"></span><button id="export"><i data-icon="download"></i>导出</button></div></div>
+<div id="sheet" tabindex="0" aria-label="地图画布，可拖动和缩放"><div id="drawing" aria-busy="true"><span class="loading">正在展图…</span></div>
+<div id="layerPanel" class="pop" hidden><b>可见图层</b><label><input type="checkbox" data-layer="states" checked>王国政区</label><label><input type="checkbox" data-layer="terrain" checked>山脉与林地</label><label><input type="checkbox" data-layer="waters" checked>河流与水系</label><label><input type="checkbox" data-layer="roads" checked>西境出海公路</label><label><input type="checkbox" data-layer="rail">后期铁路</label><label><input type="checkbox" data-layer="places" checked>城镇与据点</label></div>
+<div id="railControls" hidden><label for="railStage">铺轨进度</label><select id="railStage"></select><p id="railStageHint"></p><div class="rail-legend"><span><i></i>当时已铺轨</span><span><i></i>后续延伸</span></div><button id="railAbout">站点与章节</button></div>
+<div class="zoom"><button id="plus" aria-label="放大地图" title="放大"><i data-icon="plus"></i></button><span id="percent">100%</span><button id="minus" aria-label="缩小地图" title="缩小"><i data-icon="minus"></i></button><span class="bar"></span><button id="fit" aria-label="恢复全图" title="恢复全图"><i data-icon="fit"></i></button></div>
+<button id="mobileInfo"><i data-icon="book"></i><span>地点手记</span></button>
+</div>
+<div class="chart-foot"><span><i class="star">✦</i> 王都</span><span><i class="dot"></i> 城镇</span><span><i class="water"></i> 河流</span><span class="foot-note">相对方位示意 · 非等比例</span></div>
+</section></main>
+<dialog id="modal"><div class="modal-head"><div><small id="modalTag"></small><h2 id="modalTitle"></h2></div><button class="close" id="close" aria-label="关闭"><i data-icon="x"></i></button></div><div id="modalBody"></div></dialog>
+</body></html>
